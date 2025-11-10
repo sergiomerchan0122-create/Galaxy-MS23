@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GALAXIA MS23</title>
+  <style>
+    :root{--bg:#020617;--accent:#ffd1dc;--soft:#b3d4ff}
+    html,body{height:100%;margin:0;background:radial-gradient(ellipse at bottom,#03031a 0%, var(--bg) 50%, #000 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    header{position:fixed;left:0;right:0;top:0;z-index:30;padding:14px 18px;color:var(--accent);display:flex;align-items:center;gap:12px}
+    header h1{font-size:18px;margin:0;letter-spacing:2px}
+    main{padding-top:74px}
+    .container{max-width:900px;margin:0 auto;padding:24px}
+
+    /* Galaxy stars */
+    .stars, .twinkle{position:fixed;inset:0;pointer-events:none;z-index:0}
+    .stars:after{content:"";position:absolute;inset:0;background-image:radial-gradient(white 1px, transparent 1px);background-size:4px 4px;opacity:.06;transform:translateZ(0)}
+    .twinkle:after{content:"";position:absolute;inset:0;background-image:radial-gradient(white 1px, transparent 1px);background-size:12px 12px;opacity:.02;mix-blend-mode:screen}
+
+    section.card{min-height:80vh;display:grid;align-items:center;padding:20px;border-radius:18px;margin:28px 0;position:relative;overflow:hidden;backdrop-filter: blur(6px);box-shadow:0 8px 30px rgba(0,0,0,.6);background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))}
+    .visual{display:flex;flex-direction:column;gap:12px;align-items:center}
+    .visual img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.6);opacity:0;transform:translateY(16px) scale(.98);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.9,.2,1)}
+    .visual img.revealed{opacity:1;transform:translateY(0) scale(1)}
+
+    .phrase{position:absolute;left:12px;right:12px;text-align:center;font-weight:600;font-size:clamp(18px,4vw,34px);color:var(--accent);opacity:0;transform:translateY(8px);transition:all .8s ease;text-shadow:0 6px 18px rgba(0,0,0,.7)}
+    .phrase.show{opacity:1;transform:translateY(0)}
+
+    .sub{margin-top:12px;color:var(--soft);opacity:.95;font-size:15px;text-align:center}
+
+    /* dots navigation */
+    .nav-dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:40}
+    .nav-dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(255,255,255,.15)}
+    .nav-dots button.active{background:var(--accent);box-shadow:0 6px 18px rgba(255,209,220,.12)}
+
+    /* final message */
+    .final{padding:28px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.04));color:#fff;line-height:1.7}
+
+    /* responsive */
+    @media (min-width:720px){
+      .visual{flex-direction:row;gap:18px;align-items:center}
+      .visual img{max-width:48%}
+      .phrase{left:24%;right:24%}
+    }
+
+    footer{padding:18px;text-align:center;color:rgba(255,255,255,.5);font-size:13px}
+    .share{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#ffb6c1,#ffcbd2);color:#111;text-decoration:none;font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="twinkle"></div>
+  <header>
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.12" stroke-width="1.5"/><path d="M12 3v18" stroke="currentColor" stroke-opacity="0.18" stroke-width="1.2"/></svg>
+    <h1>GALAXIA MS23</h1>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- Section 1 -->
+      <section class="card" data-idx="0">
+        <div class="visual">
+          <img src="Photo2.jpg" alt="imagen 1">
+          <img src="Photo3.jpg" alt="imagen 2">
+        </div>
+        <div class="phrase">TE AMO</div>
+        <p class="sub">Desliza o avanza para recorrer nuestra galaxia</p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="card" data-idx="1">
+        <div class="visual">
+          <img src="Photo4.jpg" alt="imagen 3">
+          <img src="Photo5.jpg" alt="imagen 4">
+        </div>
+        <div class="phrase">ERES MI VIDA</div>
+        <p class="sub">Cada imagen, un recuerdo; cada frase, una promesa.</p>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="card" data-idx="2">
+        <div class="visual">
+          <img src="Photo11.jpg" alt="imagen 5">
+        </div>
+        <div class="phrase">ERES EL AMOR DE MI VIDA</div>
+        <p class="sub">Gracias por hacer de mi mundo un lugar mejor.</p>
+      </section>
+
+      <!-- Final message -->
+      <section class="card final-message" data-idx="3">
+        <div class="final">
+          <h2 style="margin-top:0">A veces pienso en ese 23 de febrero…</h2>
+          <p>A veces pienso en ese 23 de febrero, y no puedo evitar sonreír… porque ese día mi vida cambió para siempre. Fue el día en que decidimos ser novios, el día en que el amor dejó de ser solo una ilusión y se volvió mi realidad. Desde ese momento empezó una nueva etapa en mi vida, una etapa llena de amor, de aprendizajes, de paz, y sobre todo, de ti.</p>
+          <p>Ese día entendí que había encontrado al amor de mi vida, a la persona que le dio sentido a mis días, a quien se convirtió en mi razón para sonreír y en la dueña de mi corazón. Desde entonces, cada día contigo ha sido un regalo, cada momento a tu lado me ha hecho sentir que no necesito más que tu amor para ser feliz.</p>
+          <p>Hoy miro atrás y veo cuánto hemos crecido, cuánto hemos vivido, y no puedo evitar sentirme afortunado. Porque tenerte no fue suerte, fue destino… y ese destino me llevó justo a donde siempre quise estar: contigo.</p>
+          <p>Estoy más enamorado que nunca, y con el paso del tiempo ese sentimiento solo se hace más fuerte. No hay día en que no agradezca a Dios por haberte puesto en mi camino, por permitirme amarte y ser amado por ti.</p>
+          <p>Y si algo tengo claro, es que quiero que mis días terminen a tu lado, que la vida me siga regalando amaneceres contigo, que tus abrazos sigan siendo mi refugio y que tu amor sea siempre mi hogar. Porque desde aquel 23 de febrero, mi vida ya no me pertenece del todo… una parte de mí se quedó contigo, para siempre. ❤</p>
+        </div>
+      </section>
+
+      <footer>
+        <div>GALAXIA MS23 • Un recorrido íntimo</div>
+        <a class="share" id="downloadLink" href="#">Guardar página</a>
+      </footer>
+    </div>
+  </main>
+
+  <div class="nav-dots" aria-hidden="true"></div>
+
+  <script>
+    // Prepare navigation dots
+    const sections = Array.from(document.querySelectorAll('section.card'))
+    const dots = document.querySelector('.nav-dots')
+    sections.forEach((s,i)=>{
+      const b = document.createElement('button')
+      b.title = 'Ir a sección '+(i+1)
+      b.addEventListener('click', ()=> s.scrollIntoView({behavior:'smooth',block:'center'}))
+      if(i===0) b.classList.add('active')
+      dots.appendChild(b)
+    })
+
+    // Intersection observer to reveal images & phrases
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const sec = entry.target
+        const idx = Number(sec.getAttribute('data-idx')||0)
+        const imgs = sec.querySelectorAll('img')
+        const phrase = sec.querySelector('.phrase')
+        if(entry.isIntersecting){
+          imgs.forEach((img,ii)=>setTimeout(()=>img.classList.add('revealed'), ii*180))
+          if(phrase) setTimeout(()=>phrase.classList.add('show'), 300)
+          // activate dot
+          const allDots = Array.from(document.querySelectorAll('.nav-dots button'))
+          allDots.forEach(d=>d.classList.remove('active'))
+          allDots[idx].classList.add('active')
+        } else {
+          imgs.forEach(img=>img.classList.remove('revealed'))
+          if(phrase) phrase.classList.remove('show')
+        }
+      })
+    },{threshold:0.45})
+
+    sections.forEach(s=>io.observe(s))
+
+    // Random short phrases that appear briefly as you scroll (floating)
+    const phrases = ['TE AMO','ERES MI VIDA','ERES EL AMOR DE MI VIDA','MI RAZÓN PARA SONREÍR','MI REFUGIO']
+    function spawnPhrase(){
+      const el = document.createElement('div')
+      el.textContent = phrases[Math.floor(Math.random()*phrases.length)]
+      el.style.position='fixed'
+      el.style.left = (10 + Math.random()*80)+'%'
+      el.style.top = (20 + Math.random()*60)+'%'
+      el.style.fontSize = (12 + Math.random()*18)+'px'
+      el.style.opacity = '0'
+      el.style.color = 'rgba(255,210,220,0.95)'
+      el.style.zIndex = 20
+      el.style.pointerEvents = 'none'
+      el.style.transition = 'transform 3s ease, opacity 3s ease'
+      document.body.appendChild(el)
+      requestAnimationFrame(()=>{
+        el.style.opacity = '1'
+        el.style.transform = 'translateY(-80px)'
+      })
+      setTimeout(()=>{el.style.opacity='0';el.style.transform='translateY(-140px)';},2600)
+      setTimeout(()=>el.remove(),3400)
+    }
+    // Spawn when user scrolls
+    let last = 0
+    window.addEventListener('scroll',()=>{
+      const now = Date.now()
+      if(now-last>900){spawnPhrase();last=now}
+    })
+
+    // Download page as single html
+    document.getElementById('downloadLink').addEventListener('click', (e)=>{
+      e.preventDefault()
+      const filename = 'GALAXIA_MS23.html'
+      const blob = new Blob([document.documentElement.outerHTML],{type:'text/html'})
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url; a.download = filename; a.click()
+      URL.revokeObjectURL(url)
+    })
+
+    // Friendly tip for mobile: ensure images are present in same folder as this HTML
+  </script>
+</body>
+</html>
